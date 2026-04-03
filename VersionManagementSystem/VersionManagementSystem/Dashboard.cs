@@ -34,7 +34,7 @@ namespace VersionManagementSystem {
                 SystemVersion = versionInfo.FileVersion,
                 DateUpdated = fileInfo.LastWriteTime.ToShortDateString(),
             };
-            await versionModel.CreateDataAsync<VersionModel>($"{versionModel.SystemName}_version", false, false, versionModel.SystemName);
+            await versionModel.CreateDataAsync($"{versionModel.SystemName}_version", false, false, versionModel.SystemName);
             DialogManager.Info("Version information generated and saved successfully.", "Success");
         }
     }
