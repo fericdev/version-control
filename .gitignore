@@ -1,0 +1,13 @@
+# Visual Studio local workspace
+.vs/
+
+# User-specific files
+*.user
+*.suo
+
+# Build results
+bin/
+obj/
+
+# Others
+*.log
