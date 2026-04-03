@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../../../Projects (Soft App)/FerPROJ.Libraries/FerPROJ.Libraries/FerPROJ.Libraries.csproj" />
+  <Project Path="VersionManagementSystem/VersionManagementSystem.csproj" />
+</Solution>
