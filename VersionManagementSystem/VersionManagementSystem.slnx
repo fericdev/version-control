@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="../LMSMain/LMSMain_version.json" />
+  </Folder>
   <Project Path="../../../Projects (Soft App)/FerPROJ.Libraries/FerPROJ.Libraries/FerPROJ.Libraries.csproj" />
   <Project Path="VersionManagementSystem/VersionManagementSystem.csproj" />
 </Solution>
