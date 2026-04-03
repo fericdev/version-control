@@ -73,25 +73,25 @@
             cTextBoxKryptonPath.StateNormal.Border.Rounding = 10F;
             cTextBoxKryptonPath.StateNormal.Content.Color1 = Color.Black;
             cTextBoxKryptonPath.TabIndex = 1;
-            cTextBoxKryptonPath.Text = "cTextBoxKrypton1";
+            cTextBoxKryptonPath.Text = "...";
             // 
             // cButtonGenerate
             // 
-            cButtonGenerate.BackColor = Color.SpringGreen;
-            cButtonGenerate.BackgroundColor = Color.SpringGreen;
+            cButtonGenerate.BackColor = Color.Navy;
+            cButtonGenerate.BackgroundColor = Color.Navy;
             cButtonGenerate.BorderColor = Color.Green;
             cButtonGenerate.BorderRadius = 20;
             cButtonGenerate.BorderSize = 0;
             cButtonGenerate.FlatAppearance.BorderSize = 0;
             cButtonGenerate.FlatStyle = FlatStyle.Flat;
-            cButtonGenerate.Font = new Font("Poppins", 9F);
-            cButtonGenerate.ForeColor = Color.Black;
+            cButtonGenerate.Font = new Font("Poppins", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cButtonGenerate.ForeColor = Color.White;
             cButtonGenerate.Location = new Point(407, 97);
             cButtonGenerate.Name = "cButtonGenerate";
             cButtonGenerate.Size = new Size(150, 40);
             cButtonGenerate.TabIndex = 2;
             cButtonGenerate.Text = "Generate";
-            cButtonGenerate.TextColor = Color.Black;
+            cButtonGenerate.TextColor = Color.White;
             cButtonGenerate.UseVisualStyleBackColor = false;
             cButtonGenerate.Click += cButtonGenerate_Click;
             // 
