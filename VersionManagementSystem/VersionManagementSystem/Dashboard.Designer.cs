@@ -26,16 +26,22 @@
             kryptonLinkLabelSelectPath = new Krypton.Toolkit.KryptonLinkLabel();
             cTextBoxKryptonPath = new FerPROJ.Libraries.UIHelper.WinFormControls.CTextBoxKrypton();
             cButtonGenerate = new FerPROJ.Libraries.UIHelper.WinFormControls.CButton();
+            convertToZipCButton = new FerPROJ.Libraries.UIHelper.WinFormControls.CButton();
+            selectZipKryptonLinkLabel = new Krypton.Toolkit.KryptonLinkLabel();
+            filesKryptonListBox = new Krypton.Toolkit.KryptonListBox();
             ((System.ComponentModel.ISupportInitialize)baseKryptonPanel).BeginInit();
             baseKryptonPanel.SuspendLayout();
             SuspendLayout();
             // 
             // baseKryptonPanel
             // 
+            baseKryptonPanel.Controls.Add(filesKryptonListBox);
+            baseKryptonPanel.Controls.Add(convertToZipCButton);
+            baseKryptonPanel.Controls.Add(selectZipKryptonLinkLabel);
             baseKryptonPanel.Controls.Add(cButtonGenerate);
             baseKryptonPanel.Controls.Add(cTextBoxKryptonPath);
             baseKryptonPanel.Controls.Add(kryptonLinkLabelSelectPath);
-            baseKryptonPanel.Size = new Size(623, 178);
+            baseKryptonPanel.Size = new Size(623, 389);
             // 
             // kryptonLinkLabelSelectPath
             // 
@@ -86,7 +92,7 @@
             cButtonGenerate.FlatStyle = FlatStyle.Flat;
             cButtonGenerate.Font = new Font("Poppins", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cButtonGenerate.ForeColor = Color.White;
-            cButtonGenerate.Location = new Point(407, 97);
+            cButtonGenerate.Location = new Point(407, 87);
             cButtonGenerate.Name = "cButtonGenerate";
             cButtonGenerate.Size = new Size(150, 40);
             cButtonGenerate.TabIndex = 2;
@@ -95,12 +101,50 @@
             cButtonGenerate.UseVisualStyleBackColor = false;
             cButtonGenerate.Click += cButtonGenerate_Click;
             // 
+            // convertToZipCButton
+            // 
+            convertToZipCButton.BackColor = Color.Navy;
+            convertToZipCButton.BackgroundColor = Color.Navy;
+            convertToZipCButton.BorderColor = Color.Green;
+            convertToZipCButton.BorderRadius = 20;
+            convertToZipCButton.BorderSize = 0;
+            convertToZipCButton.FlatAppearance.BorderSize = 0;
+            convertToZipCButton.FlatStyle = FlatStyle.Flat;
+            convertToZipCButton.Font = new Font("Poppins", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            convertToZipCButton.ForeColor = Color.White;
+            convertToZipCButton.Location = new Point(407, 264);
+            convertToZipCButton.Name = "convertToZipCButton";
+            convertToZipCButton.Size = new Size(150, 40);
+            convertToZipCButton.TabIndex = 5;
+            convertToZipCButton.Text = "ZIP";
+            convertToZipCButton.TextColor = Color.White;
+            convertToZipCButton.UseVisualStyleBackColor = false;
+            convertToZipCButton.Click += convertToZipCButton_Click;
+            // 
+            // selectZipKryptonLinkLabel
+            // 
+            selectZipKryptonLinkLabel.Location = new Point(34, 162);
+            selectZipKryptonLinkLabel.Name = "selectZipKryptonLinkLabel";
+            selectZipKryptonLinkLabel.Size = new Size(146, 29);
+            selectZipKryptonLinkLabel.StateCommon.ShortText.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            selectZipKryptonLinkLabel.TabIndex = 3;
+            selectZipKryptonLinkLabel.Values.Text = "Select Path:";
+            selectZipKryptonLinkLabel.LinkClicked += selectZipKryptonLinkLabel_LinkClicked;
+            // 
+            // filesKryptonListBox
+            // 
+            filesKryptonListBox.Location = new Point(186, 162);
+            filesKryptonListBox.Name = "filesKryptonListBox";
+            filesKryptonListBox.Size = new Size(371, 96);
+            filesKryptonListBox.TabIndex = 6;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(623, 178);
+            ClientSize = new Size(623, 389);
             Name = "Dashboard";
+            StartPosition = FormStartPosition.CenterScreen;
             StateCommon.Back.Color1 = Color.Navy;
             StateCommon.Back.Color2 = Color.Navy;
             StateCommon.Border.Color1 = Color.Navy;
@@ -121,5 +165,8 @@
         private FerPROJ.Libraries.UIHelper.WinFormControls.CButton cButtonGenerate;
         private FerPROJ.Libraries.UIHelper.WinFormControls.CTextBoxKrypton cTextBoxKryptonPath;
         private Krypton.Toolkit.KryptonLinkLabel kryptonLinkLabelSelectPath;
+        private FerPROJ.Libraries.UIHelper.WinFormControls.CButton convertToZipCButton;
+        private Krypton.Toolkit.KryptonLinkLabel selectZipKryptonLinkLabel;
+        private Krypton.Toolkit.KryptonListBox filesKryptonListBox;
     }
 }
