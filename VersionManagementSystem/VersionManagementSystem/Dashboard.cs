@@ -52,7 +52,8 @@ namespace VersionManagementSystem {
 
                 filesKryptonListBox.Items.Clear();
                 foreach (var file in selectedFiles) {
-                    filesKryptonListBox.Items.Add(file);
+                    var info = new FileInfo(file);
+                    filesKryptonListBox.Items.Add($"{info.Name} ({info.Length / 1024} KB)");
                 }
             }
         }
