@@ -1,4 +1,5 @@
-﻿using FerPROJ.Libraries.UIHelper.Files;
+﻿using FerPROJ.Libraries.UIHelper.Extensions;
+using FerPROJ.Libraries.UIHelper.Files;
 using FerPROJ.Libraries.UIHelper.WinForm.Classes;
 using FerPROJ.Libraries.UIHelper.WinForm.Forms;
 using System;
@@ -14,6 +15,7 @@ using System.Windows.Forms;
 namespace VersionManagementSystem {
     public partial class Dashboard : FrmDashboard {
         private List<string> selectedFiles = new List<string>();
+        private string selectFileSystemName;
         public Dashboard() {
             InitializeComponent();
         }
@@ -53,6 +55,11 @@ namespace VersionManagementSystem {
                 filesKryptonListBox.Items.Clear();
                 foreach (var file in selectedFiles) {
                     var info = new FileInfo(file);
+
+                    if (info.Extension.Equals(".exe", StringComparison.OrdinalIgnoreCase)) {
+                        selectFileSystemName = Path.GetFileNameWithoutExtension(info.Name).Replace(".", "");
+                    }
+
                     filesKryptonListBox.Items.Add($"{info.Name} ({info.Length / 1024} KB)");
                 }
             }
@@ -64,16 +71,12 @@ namespace VersionManagementSystem {
                 return;
             }
 
-            using SaveFileDialog sfd = new SaveFileDialog {
-                Filter = "Zip files (*.zip)|*.zip",
-                FileName = "output.zip"
-            };
+            var saveDirectory = DocWriterManager.GetOrCreateEnvironmentPath("output.zip", false, selectFileSystemName);
 
-            if (sfd.ShowDialog() == DialogResult.OK) {
-                CreateZip(selectedFiles, sfd.FileName);
+            CreateZip(selectedFiles, saveDirectory);
 
-                DialogManager.Info("ZIP created successfully!", "Success");
-            }
+            DialogManager.Info("ZIP created successfully!", "Success");
+
         }
 
         // =========================
