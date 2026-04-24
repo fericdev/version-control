@@ -41,7 +41,7 @@
             baseKryptonPanel.Controls.Add(cButtonGenerate);
             baseKryptonPanel.Controls.Add(cTextBoxKryptonPath);
             baseKryptonPanel.Controls.Add(kryptonLinkLabelSelectPath);
-            baseKryptonPanel.Size = new Size(623, 389);
+            baseKryptonPanel.Size = new Size(1209, 592);
             // 
             // kryptonLinkLabelSelectPath
             // 
@@ -57,7 +57,7 @@
             // 
             cTextBoxKryptonPath.Location = new Point(186, 52);
             cTextBoxKryptonPath.Name = "cTextBoxKryptonPath";
-            cTextBoxKryptonPath.Size = new Size(371, 29);
+            cTextBoxKryptonPath.Size = new Size(957, 29);
             cTextBoxKryptonPath.StateActive.Back.Color1 = Color.WhiteSmoke;
             cTextBoxKryptonPath.StateActive.Border.Color1 = Color.DarkGray;
             cTextBoxKryptonPath.StateActive.Border.Color2 = Color.White;
@@ -92,7 +92,7 @@
             cButtonGenerate.FlatStyle = FlatStyle.Flat;
             cButtonGenerate.Font = new Font("Poppins", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cButtonGenerate.ForeColor = Color.White;
-            cButtonGenerate.Location = new Point(407, 87);
+            cButtonGenerate.Location = new Point(993, 87);
             cButtonGenerate.Name = "cButtonGenerate";
             cButtonGenerate.Size = new Size(150, 40);
             cButtonGenerate.TabIndex = 2;
@@ -112,7 +112,7 @@
             convertToZipCButton.FlatStyle = FlatStyle.Flat;
             convertToZipCButton.Font = new Font("Poppins", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             convertToZipCButton.ForeColor = Color.White;
-            convertToZipCButton.Location = new Point(407, 264);
+            convertToZipCButton.Location = new Point(993, 505);
             convertToZipCButton.Name = "convertToZipCButton";
             convertToZipCButton.Size = new Size(150, 40);
             convertToZipCButton.TabIndex = 5;
@@ -135,14 +135,14 @@
             // 
             filesKryptonListBox.Location = new Point(186, 162);
             filesKryptonListBox.Name = "filesKryptonListBox";
-            filesKryptonListBox.Size = new Size(371, 96);
+            filesKryptonListBox.Size = new Size(957, 337);
             filesKryptonListBox.TabIndex = 6;
             // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(623, 389);
+            ClientSize = new Size(1209, 592);
             Name = "Dashboard";
             StartPosition = FormStartPosition.CenterScreen;
             StateCommon.Back.Color1 = Color.Navy;
