@@ -29,12 +29,14 @@
             convertToZipCButton = new FerPROJ.Libraries.UIHelper.WinFormControls.CButton();
             selectZipKryptonLinkLabel = new Krypton.Toolkit.KryptonLinkLabel();
             filesKryptonListBox = new Krypton.Toolkit.KryptonListBox();
+            selectFoldersKryptonLinkLabel = new Krypton.Toolkit.KryptonLinkLabel();
             ((System.ComponentModel.ISupportInitialize)baseKryptonPanel).BeginInit();
             baseKryptonPanel.SuspendLayout();
             SuspendLayout();
             // 
             // baseKryptonPanel
             // 
+            baseKryptonPanel.Controls.Add(selectFoldersKryptonLinkLabel);
             baseKryptonPanel.Controls.Add(filesKryptonListBox);
             baseKryptonPanel.Controls.Add(convertToZipCButton);
             baseKryptonPanel.Controls.Add(selectZipKryptonLinkLabel);
@@ -128,7 +130,7 @@
             selectZipKryptonLinkLabel.Size = new Size(146, 29);
             selectZipKryptonLinkLabel.StateCommon.ShortText.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             selectZipKryptonLinkLabel.TabIndex = 3;
-            selectZipKryptonLinkLabel.Values.Text = "Select Path:";
+            selectZipKryptonLinkLabel.Values.Text = "Select Files:";
             selectZipKryptonLinkLabel.LinkClicked += selectZipKryptonLinkLabel_LinkClicked;
             // 
             // filesKryptonListBox
@@ -137,6 +139,16 @@
             filesKryptonListBox.Name = "filesKryptonListBox";
             filesKryptonListBox.Size = new Size(957, 337);
             filesKryptonListBox.TabIndex = 6;
+            // 
+            // selectFoldersKryptonLinkLabel
+            // 
+            selectFoldersKryptonLinkLabel.Location = new Point(6, 207);
+            selectFoldersKryptonLinkLabel.Name = "selectFoldersKryptonLinkLabel";
+            selectFoldersKryptonLinkLabel.Size = new Size(177, 29);
+            selectFoldersKryptonLinkLabel.StateCommon.ShortText.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            selectFoldersKryptonLinkLabel.TabIndex = 7;
+            selectFoldersKryptonLinkLabel.Values.Text = "Select Folders:";
+            selectFoldersKryptonLinkLabel.LinkClicked += selectFoldersKryptonLinkLabel_LinkClicked;
             // 
             // Dashboard
             // 
@@ -168,5 +180,6 @@
         private FerPROJ.Libraries.UIHelper.WinFormControls.CButton convertToZipCButton;
         private Krypton.Toolkit.KryptonLinkLabel selectZipKryptonLinkLabel;
         private Krypton.Toolkit.KryptonListBox filesKryptonListBox;
+        private Krypton.Toolkit.KryptonLinkLabel selectFoldersKryptonLinkLabel;
     }
 }

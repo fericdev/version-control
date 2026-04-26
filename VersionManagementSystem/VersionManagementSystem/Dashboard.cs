@@ -2,6 +2,7 @@
 using FerPROJ.Libraries.UIHelper.Files;
 using FerPROJ.Libraries.UIHelper.WinForm.Classes;
 using FerPROJ.Libraries.UIHelper.WinForm.Forms;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ using System.Windows.Forms;
 
 namespace VersionManagementSystem {
     public partial class Dashboard : FrmDashboard {
-        private List<string> selectedFiles = new List<string>();
+        Dictionary<string, string> selectedFiles = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         private string selectFileSystemName;
         public Dashboard() {
             InitializeComponent();
@@ -50,17 +51,68 @@ namespace VersionManagementSystem {
 
             if (ofd.ShowDialog() == DialogResult.OK) {
                 selectedFiles.Clear();
-                selectedFiles.AddRange(ofd.FileNames);
-
                 filesKryptonListBox.Items.Clear();
-                foreach (var file in selectedFiles) {
-                    var info = new FileInfo(file);
 
-                    if (info.Extension.Equals(".exe", StringComparison.OrdinalIgnoreCase)) {
-                        selectFileSystemName = Path.GetFileNameWithoutExtension(info.Name).Replace(".", "");
+                foreach (var path in ofd.FileNames) {
+                    // CASE 1: it's a file
+                    if (File.Exists(path)) {
+                        AddFile(path);
                     }
+                }
+            }
+        }
+        private void selectFoldersKryptonLinkLabel_LinkClicked(object sender, EventArgs e) {
+            var dialog = new CommonOpenFileDialog {
+                Title = "Select folders",
+                IsFolderPicker = true,
+                Multiselect = true
+            };
 
-                    filesKryptonListBox.Items.Add($"{info.Name} ({info.Length / 1024} KB)");
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok) {
+                foreach (var folder in dialog.FileNames) {
+                    AddFolder(folder);
+                }
+            }
+        }
+        private void AddFile(string filePath) {
+            if (!File.Exists(filePath))
+                return;
+
+            var fileName = Path.GetFileName(filePath);
+
+            if (selectedFiles.ContainsKey(filePath))
+                return;
+
+            selectedFiles[filePath] = fileName; // root level
+
+            var info = new FileInfo(filePath);
+
+            if (info.Extension.Equals(".exe", StringComparison.OrdinalIgnoreCase)) {
+                selectFileSystemName = Path.GetFileNameWithoutExtension(info.Name)
+                    .Replace(".", "");
+            }
+
+            filesKryptonListBox.Items.Add($"{fileName} ({info.Length / 1024} KB)");
+        }
+        private void AddFolder(string folderPath) {
+            if (!Directory.Exists(folderPath))
+                return;
+
+            var rootName = Path.GetFileName(folderPath);
+
+            var files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
+
+            foreach (var file in files) {
+                var relativePath = Path.GetRelativePath(folderPath, file);
+
+                var entryPath = Path.Combine(rootName, relativePath)
+                    .Replace("\\", "/"); // important for zip
+
+                if (!selectedFiles.ContainsKey(file)) {
+                    selectedFiles[file] = entryPath;
+
+                    var info = new FileInfo(file);
+                    filesKryptonListBox.Items.Add($"{entryPath} ({info.Length / 1024} KB)");
                 }
             }
         }
@@ -82,19 +134,21 @@ namespace VersionManagementSystem {
         // =========================
         // ZIP LOGIC
         // =========================
-        private void CreateZip(List<string> files, string zipPath) {
-            // If exists, delete first
+        private void CreateZip(Dictionary<string, string> files, string zipPath) {
             if (File.Exists(zipPath))
                 File.Delete(zipPath);
 
             using (ZipArchive zip = ZipFile.Open(zipPath, ZipArchiveMode.Create)) {
-                foreach (string file in files) {
-                    if (!File.Exists(file))
+                foreach (var kvp in files) {
+                    var fullPath = kvp.Key;
+                    var entryName = kvp.Value;
+
+                    if (!File.Exists(fullPath))
                         continue;
 
                     zip.CreateEntryFromFile(
-                        file,
-                        Path.GetFileName(file),
+                        fullPath,
+                        entryName.Replace("\\", "/"), // ensure valid zip path
                         CompressionLevel.Optimal
                     );
                 }
